@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overwrite Console Methods</title>
+  <link rel="stylesheet" href="./prism.css">
+  <script defer src="./script.js"></script>
+  <script defer src="./prism.js"></script>
+</head>
+<body>
+  <p>(open developer tool, check console log and errors)</p>
+
+  <section class="codeBox">
+    <pre>
+      <code class="language-js line-numbers" data-prismjs-copy="copy code">
+const consoleLogs = [];
+const consoleErrors = [];
+const consoleWarns = [];
+const consoleDebugs = [];
+
+console.defaultLog = console.log.bind(console);
+console.log = function() {
+  console.defaultLog(arguments); // cannot keep the correct line number
+  consoleLogs.push(Array.from(arguments));
+}
+
+console.defaultError = console.error.bind(console);
+console.error = function() {
+  console.defaultError(arguments); // cannot keep the correct line number
+  consoleErrors.push(Array.from(arguments));
+}
+
+console.defaultWarn = console.warn.bind(console);
+console.warn = function() {
+  console.defaultWarn(arguments); // cannot keep the correct line number
+  consoleWarns.push(Array.from(arguments));
+}
+
+console.defaultDebug = console.debug.bind(console);
+console.debug = function() {
+  console.defaultDebug(arguments); // cannot keep the correct line number
+  consoleDebugs.push(Array.from(arguments));
+}
+
+const causeSomeErrors = () => {
+  console.error('some errors happens at: ', new Date().toDateString())
+  //error.all()
+}
+      </code>
+    </pre>
+  </section>
+</body>
+</html>
