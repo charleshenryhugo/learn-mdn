@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./prism.css">
+  <script defer src="./prism.js"></script>
+  <title>Track user agent using media query.</title>
+</head>
+<body>
+  <h2>Try resizing the viewport to check the following media querys.</h2>
+  <pre>
+    <code class="language-html line-numbers" data-prismjs-copy="copy code">
+&lt;section class=&quot;user-agent-bg&quot;&gt;&lt;/section&gt;
+    </code>
+  </pre>
+  <pre>
+    <code class="language-css line-numbers" data-prismjs-copy="copy code">
+.user-agent-bg {
+  width: 100%;
+  height: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 300px) {
+  .user-agent-bg {
+    background-image: url('./assets/horse-1.jpg')
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .user-agent-bg {
+    background-image: url('./assets/horse-2.webp')
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .user-agent-bg {
+    background-image: url('./assets/horse-3.jpg')
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .user-agent-bg {
+    background-image: url('./assets/horse-4-large-size.jpg')
+  }
+}
+    </code>
+  </pre>
+  <section class="user-agent-bg"></section>
+
+  <h2>Try resizing the viewport and see the requests sent.</h2>
+  <pre>
+    <code class="language-html line-numbers" data-prismjs-copy="copy code">
+&lt;section class=&quot;user-agent-bg-hidden&quot;&gt;&lt;/section&gt;
+    </code>
+  </pre>
+  <pre>
+    <code class="language-css line-numbers" data-prismjs-copy="copy code">
+.user-agent-bg-hidden {
+  width: 0;
+  height: 0;
+}
+
+@media screen and (max-width: 300px) {
+  .user-agent-bg-hidden {
+    background-image: url('https://xxxx/apiUrl?max-width=300px')
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .user-agent-bg-hidden {
+    background-image: url('https://xxxx/apiUrl?max-width=600px&min-width=300px')
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .user-agent-bg-hidden {
+    background-image: url('https://xxxx/apiUrl?max-width=900px&min-width=600px')
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .user-agent-bg-hidden {
+    background-image: url('https://xxxx/apiUrl?min-width=900px')
+  }
+}
+    </code>
+  </pre>
+  <section class="user-agent-bg-hidden"></section>
+</body>
+</html>
