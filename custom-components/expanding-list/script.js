@@ -5,7 +5,7 @@ class ExpandingList extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: 'open' }); // same as this.shadowRoot
 
     const styles = document.createElement('style');
-    style.textContent = `
+    styles.textContent = `
     `
 
     const wrapper = document.createElement('div');
